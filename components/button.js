@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, Text, View } from 'react-native';
+import { TouchableOpacity, Text } from 'react-native';
 
 class Button extends Component {
-    state = {
-        count: 0
-    }
     render() {
-        const { count } = this.state;
-        const { label, plus } = this.props;
+        const { label, count, onStateChange } = this.props;
         return (
             <TouchableOpacity
                 style={{
@@ -16,7 +12,7 @@ class Button extends Component {
                     alignItems: "center", marginVertical: 30, borderRadius: 10
                 }}
                 activeOpacity={1}
-                onPress={() => { this.setState({ count: plus ? count + 1 : count - 1 }) }}
+                onPress={() => onStateChange()}
             >
                 <Text style={{ color: "white", fontSize: 24 }}>{label} : {count}</Text>
             </TouchableOpacity>
