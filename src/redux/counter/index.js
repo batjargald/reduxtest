@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
-    count: 0
+    count: 0,
+    title: 'Hello World'
 };
 
 const countReducer = (state = INITIAL_STATE, action) => {

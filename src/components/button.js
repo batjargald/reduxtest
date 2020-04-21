@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { TouchableOpacity, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { setCount } from '../redux/counter/actions'
+import { createStructuredSelector } from 'reselect';
+
+import { selectCount } from '../redux/counter/selector'
 
 class Button extends Component {
 
@@ -24,11 +27,11 @@ class Button extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    setCount: num => dispatch(setCount(num)),
+    setCount: increase => dispatch(setCount(increase)),
 })
 
-const mapStateToProps = state => ({
-    count: state.counter.count
+const mapStateToProps = createStructuredSelector({
+    count: selectCount
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Button);
