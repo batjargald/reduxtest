@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { View } from 'react-native'
 
-import Button from './components/button';
-import Title from './components/title';
+import Button from './src/components/button';
+import Title from './src/components/title';
 
 class App extends Component {
   state = {
