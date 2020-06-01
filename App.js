@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { View } from 'react-native'
 import { Provider } from 'react-redux';
-import store from './src/redux/store';
+import { PersistGate } from 'redux-persist/integration/react'
+import { store, persistor } from './src/redux/store';
 
 import Button from './src/components/button';
 import Title from './src/components/title';
@@ -12,12 +13,15 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <View style={{ paddingVertical: "50%", alignItems: 'center' }}>
-          <Title />
-          <Count />
-          <Button label="INCREMENT" increase={true} />
-          <Button label="DECREMENT" increase={false} />
-        </View>
+        <PersistGate loading={null} persistor={persistor}>
+
+          <View style={{ paddingVertical: "50%", alignItems: 'center' }}>
+            <Title />
+            <Count />
+            <Button label="INCREMENT" increase={true} />
+            <Button label="DECREMENT" increase={false} />
+          </View>
+        </PersistGate>
       </Provider>
     );
   }
